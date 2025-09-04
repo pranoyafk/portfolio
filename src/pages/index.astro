@@ -1,7 +1,90 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import { skills } from "../utils/constants";
+import { navLinks } from "../utils/constants";
 ---
 
 <MainLayout title="Pranoy's Portfolio">
-  <h1>Hello Pranoy</h1>
+  <div class="min-h-screen bg-white">
+    <div class="container mx-auto">
+      <!-- Navigation -->
+      <nav class="flex justify-end py-8">
+        <div class="flex gap-8 pr-6 sm:pr-20">
+          {
+            navLinks.map((link, index) => (
+              <a
+                href={link.url}
+                class="text-neutral-600 hover:text-black font-medium transition-colors duration-200"
+                target="_blank"
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="max-w-2xl mx-auto px-6 pt-8 sm:pt-20">
+        <!-- Profile Section -->
+        <div class="mb-6">
+          <div
+            class="w-20 h-20 rounded-full overflow-hidden border border-neutral-200 mb-8"
+          >
+            <img
+              src="/avatar.jpeg"
+              width={80}
+              height={80}
+              alt="Pranoy's Portfolio"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <div class="space-y-6">
+            <h1 class="text-3xl font-light text-black">Hi, I'm Pranoy.</h1>
+
+            <p class="space-y-1 text-neutral-700 leading-relaxed">
+              I design and develop full-stack web apps that don’t just look
+              good, but also feel easy to use. My goal is building tech that
+              helps people every day
+            </p>
+          </div>
+        </div>
+
+        <!-- Current Work -->
+        <div class="mb-6 pb-8 border-b border-neutral-100">
+          <p class="text-neutral-700">
+            Currently working on <span class="text-black font-medium"
+              >devopage</span
+            >
+          </p>
+        </div>
+
+        <!-- Skills -->
+        <div class="mb-6">
+          <h2 class="text-black font-medium mb-3">Skills</h2>
+          <div class="flex gap-3">
+            {
+              skills.map((skill, index) => (
+                <>
+                  <div class="text-black text-sm py-1">{skill}</div>
+                  {index < skills.length - 1 && <span>•</span>}
+                </>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mb-20">
+          <a
+            href="mailto: works.pranoy@gmail.com"
+            class="bg-black text-white px-6 py-2 text-sm font-medium hover:bg-neutral-800 transition-colors duration-200"
+          >
+            Say Hello
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
 </MainLayout>
